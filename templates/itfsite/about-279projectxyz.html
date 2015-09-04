@@ -1,0 +1,92 @@
+{% extends "master.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block head %}
+<style>
+.team {
+}
+	@media only screen and (min-width: 768px) {
+		.team > div {
+			border-left: 1px solid #BBB;
+			padding-left: 1.25em;
+			padding-top: 1px;
+			padding-bottom: 3em;
+			font-size: 86%;
+		}
+
+		.team h2 {
+			font-size: 20px;
+			font-weight: normal;
+			text-align: center;
+		}
+	}
+
+	.team h3 {
+		margin: 1.5em 0 1em 0;
+		font-size: 16px;
+		font-weight: bold;
+	}
+		.team h3 span {
+			font-size: 80%;
+			font-weight: lighter;
+		}
+
+	.team img {
+		float: right;
+		margin: 0 0 1em 1.25em;
+		width: 160px;
+		height: 175px;
+		border: 1px solid #AAA;
+	}
+	.team p {
+		color: black;
+	}
+		@media only screen and (min-width: 1200px) {
+			.team p {
+				text-align: justify;
+				line-height: 160%;
+			}
+		}
+
+	.team .ext {
+		margin-left: .5em;
+	}
+	.team .ext:after {
+		content: "►";
+		margin-left: .25em;
+	}
+
+dl dd {
+	margin-bottom: .5em;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<h1 style="margin-bottom: 0">About</h1>
+
+<div class="row">
+	<div class="col-sm-9 col-md-6 long-text">
+		<p style="margin-top: 2em">The 279 for Change Campaign is designed to change the way things are done in Washington, DC.</p>
+
+		<p>Instead of voting for candidates and then spending the next 2 or 4 or 6 years hoping that they do the right things, The 279 for Change Campaign goes around the traditional &ldquo;wait and see&rdquo; process and places firm control of certain pieces of legislation into the hands of the American people.</p>
+
+		<p>Something that our Founding Fathers, and Democracy had always intended.</p>
+
+		<p>In 2014 only about 50 pieces of real legislation were passed — in the entire year — while over 10,000 bills, many supported by the VAST majority of Americans, languished and were ignored. This campaign is changing that.</p>
+
+		<p>The 279 concept and campaign was founded by <a href="http://www.RichardGreene.org">Richard Greene</a>, a former Congressional Candidate and Host of &ldquo;Hollywood CLOUT!&rdquo; on Air America Radio, frequent contributor to The HuffingtonPost and A Political Communication Strategist for Presidents, Prime Ministers, Governors, Senators, Congresspersons, Mayors, Royalty, Celebrities and CEOs in 45 countries around the world, and author of <a href="http://www.WordsThatShookTheWorld.com">Words That Shook The World: 100 Years of Unforgettable Speeches and Events</a>.</p>
+
+		<p>Co-founder is Political Science Professor Jeanne Zaino, former Dean of Iona College and now Professor at Iona and NYU and a frequent expert guest on Fox News Channel, MSNBC and other television and radio outlets.</p>
+
+		<hr>
+
+		<p>Please refer to our <a href="/about/how-it-works">how it works details</a> for more information about how this site works.</p>
+	</div>
+
+	<div class="col-sm-6 team">
+	</div>
+</div>
+
+{% endblock %}

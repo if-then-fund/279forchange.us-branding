@@ -1,0 +1,89 @@
+{% extends "master.html" %}
+
+{% block title2 %}{{SITE_NAME}} - {% include "tagline.txt" %}{% endblock %}
+
+{% block head %}
+<meta property="og:title" content="{{SITE_NAME}}" />
+<meta name="description" content="{% include "tagline.txt" %}">
+<meta property="og:description" content="{% include "tagline.txt" %}">
+{% include "og_image.html" %}
+<meta name="twitter:card" content="summary" />
+
+<style>
+#deck {
+	margin-bottom: 2em;
+}
+
+.campaign-bubble {
+	border-radius: 10px;
+	border: 2px solid rgba(30,30,30,.4);
+	background: white;
+	padding: 10px;
+	margin-bottom: 1em;
+}
+	.campaign-bubble a {
+		color: #126712; /* meets contrast requirement on white bg */
+	}
+	.campaign-title {
+		padding-bottom: 6px;
+		border-bottom: 1px solid #494;
+		margin-bottom: 8px;
+		line-height: 132%;
+	}
+		.campaign-title a {
+			font-size: 120%;
+			font-weight: bold;
+			border: none;
+		}
+	.campaign-description {
+		font-size: 90%;
+	}
+		.campaign-description p {
+			line-height: 130%;
+		}
+	.campaign-take-action {
+		margin-top: .75em;
+		text-align: right;
+	}
+		.campaign-take-action a {
+			font-weight: bold;
+			border: none;
+		}
+
+</style>
+{% endblock %}
+
+{% block body %}
+<h1>279 for Change Campaign</h1>
+
+<div id="deck">
+	The 279 for Change Campaign is designed to change the way things are done in Washington, DC.
+</div>
+
+{% if open_campaigns|length > 0 %}
+<div class="row">
+	{% for c in open_campaigns %}
+		{% if forloop.counter0|divisibleby:2 %}<div class="clearfix visible-sm-block"></div>{% endif %}
+		{% if forloop.counter0|divisibleby:3 %}<div class="clearfix visible-md-block"></div><div class="clearfix visible-lg-block"></div>{% endif %}
+		<div class="col-sm-6 col-md-4">
+			<div class="campaign-bubble">
+				<div class="campaign-description">
+					<strong>{% if c.owner %}{{c.owner.name}}{% endif %}</strong>
+				</div>
+				<div class="campaign-title"><a href="{{c.get_absolute_url}}">{{c.title}}</a></div>
+				{% include "itfsite/canpaign-summary.html" with campaign=c %}
+				<div class="campaign-take-action">
+					<a href="{{c.get_absolute_url}}">Take Action &raquo;</a>
+				</div>
+
+				{% if c.owner.profile_image.name %}
+				<div style="margin: 1em auto 0 auto; border: 1px solid #555; background-image: url({{c.owner.profile_image.url}}?size=tb);" class="organization-profile-pic"></div>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
+
