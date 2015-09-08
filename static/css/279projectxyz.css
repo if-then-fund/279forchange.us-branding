@@ -1,3 +1,42 @@
+body {
+	background-color: #F9F5E6;
+}
+
+hr {
+    border-top: 1px solid #444;
+}
+
+a, a:hover, a:link, a:visited, a:active {
+	color: #440254; /* accessibility requires high contrast */
+	text-decoration: none; /* border-bottom looks better than underline */
+	border-bottom: 1px solid #440254; /* accessibility requires a line */
+}
+	a:hover, a:active {
+		color: #627;
+		border-color: #627;
+	}
+	footer a, footer a:hover, footer a:link, footer a:visited, footer a:active {
+		color: #885B94;
+		border: none;
+	}
+		footer a:hover {
+			border-bottom: 1px solid #885B94;
+		}
+
+#footer-social a {
+	color: #440254;
+}
+	#footer-social a:hover {
+		color: #440254;
+	}
+
+#nav-wrap {
+	background-color: #885B94;
+}
+
+.navbar a {
+	color: #F9F5E6;
+}
 .navbar a.navbar-brand {
 	background-image: url('/static/branding/279project/logo.png');
 	background-size: 32px 32px;

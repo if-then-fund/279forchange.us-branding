@@ -11,44 +11,43 @@
 
 <style>
 #deck {
+	font-size: 120%;
 	margin-bottom: 2em;
 }
 
-.campaign-bubble {
-	border-radius: 10px;
-	border: 2px solid rgba(30,30,30,.4);
-	background: white;
-	padding: 10px;
-	margin-bottom: 1em;
+#magic-number {
+	margin: 0 auto;
 }
-	.campaign-bubble a {
-		color: #126712; /* meets contrast requirement on white bg */
-	}
-	.campaign-title {
-		padding-bottom: 6px;
-		border-bottom: 1px solid #494;
-		margin-bottom: 8px;
-		line-height: 132%;
-	}
-		.campaign-title a {
-			font-size: 120%;
-			font-weight: bold;
-			border: none;
-		}
-	.campaign-description {
-		font-size: 90%;
-	}
-		.campaign-description p {
-			line-height: 130%;
-		}
-	.campaign-take-action {
-		margin-top: .75em;
+#magic-number td {
+	vertical-align: top;
+	line-height: 135%;
+	font-size: 20px;
+	font-family: "jaf-facitweb", sans-serif;
+	font-weight: bold;
+	padding-bottom: .5em;
+}
+	#magic-number td.num {
+		padding-left: .25em;
+		padding-right: .75em;
 		text-align: right;
 	}
-		.campaign-take-action a {
-			font-weight: bold;
-			border: none;
+	#magic-number div {
+		font-weight: normal;
+		font-size: 92%;
+		margin-top: 1px;
+	}
+	#magic-number tr.total {
+		border-top: 1px solid black;
+	}
+		#magic-number tr.total td {
+			padding-top: .5em;
 		}
+
+{% include "itfsite/campaign-bubble-styles.css" %}
+
+.campaign-bubble {
+	border-color: #A494A8;
+}
 
 </style>
 {% endblock %}
@@ -60,45 +59,58 @@
 	The 279 for Change Campaign is designed to change the way things are done in Washington, DC.
 </div>
 
-{% if open_campaigns|length > 0 %}
+<hr>
+
 <div class="row">
-	{% for c in open_campaigns %}
-		{% if forloop.counter0|divisibleby:2 %}<div class="clearfix visible-sm-block"></div>{% endif %}
-		{% if forloop.counter0|divisibleby:3 %}<div class="clearfix visible-md-block"></div><div class="clearfix visible-lg-block"></div>{% endif %}
-		<div class="col-sm-6 col-md-4">
-			<div class="campaign-bubble">
-				<div class="campaign-description">
-					<strong>{% if c.owner %}{{c.owner.name}}{% endif %}</strong>
-				</div>
-				<div class="campaign-title"><a href="{{c.get_absolute_url}}">{{c.title}}</a></div>
-				{% include "itfsite/canpaign-summary.html" with campaign=c %}
+	<div class="col-md-6 col-lg-5">
+		<div style="padding-right: 15px">
+			<p>From now on, we control the politicians and our fate as we collectively crowdsource “The Magic Number” in American government to end gridlock and move this country that we love forward.</p>
 
-				{% if c.get_active_letters_campaign and c.get_active_letters_campaign.body_toggles_on %}
-					{% with x=c.get_active_letters_campaign.announced_position_breakdown %}
-						{% if x %}
-							<div style="margin-top: 4px; border-top: 1px solid #999; padding-top: 4px;">
-							<table style="font-size: 90%;">
-							{% for outcome in x %}
-								<tr><td style="padding-right: 1.5em">{{outcome.count}} Legislator{{outcome.count|pluralize}}</td> <td>{{outcome.label}}</td></tr>
-							{% endfor %}
-							</table>
-							</div>
-						{% endif %}
-					{% endwith %}
-				{% endif %}
+			<h2>What&rsquo;s the magic number?</h2>
 
-				<div class="campaign-take-action">
-					<a href="{{c.get_absolute_url}}">Take Action &raquo;</a>
-				</div>
+			<table id="magic-number">
+				<tr>
+					<td/>
+					<td class="num">218</td>
+					<td class="descr">Representatives<div>(a majority)</div></td>
+				</tr>
+				<tr>
+					<td class="sym">+</td>
+					<td class="num">60</td>
+					<td class="descr">Senators<div>(breaks a filibuster)</div></td>
+				</tr>
+				<tr>
+					<td class="sym">+</td>
+					<td class="num">1</td>
+					<td class="descr">The President</td>
+				</tr>
+				<tr class="total">
+					<td class="sym">=</td>
+					<td class="num">279</td>
+					<td class="descr">Can Make A Law</td>
+				</tr>
+			</table>
 
-				{% if c.owner.profile_image.name %}
-				<div style="margin: 1em auto 0 auto; border: 1px solid #555; background-image: url({{c.owner.profile_image.url}}?size=tb);" class="organization-profile-pic"></div>
-				{% endif %}
-			</div>
+			<p>With the “Magic 279,” we can pass ANY bill, we can make ANYTHING happen, and we can CHANGE AMERICA in a heartbeat!</p>
 		</div>
-	{% endfor %}
-</div>
-{% endif %}
+	</div>
 
+	<div class="col-md-6 col-lg-7">
+		<h2 style="margin-top: 0">Let&rsquo;s get to 279 on these issues:</h2>
+
+		<p style="margin: 2em 0;">Here are the celebrities, causes and bills that are available RIGHT NOW on causes that ALREADY have a substantial majority of support in the country. Choose one (or more) and help us crowdsource 279, end gridlock, practice true democracy and change America!</p>
+
+		{% if open_campaigns|length > 0 %}
+		<div class="row">
+			{% for c in open_campaigns %}
+				{% if forloop.counter0|divisibleby:2 %}<div class="clearfix"></div>{% endif %}
+				<div class="col-sm-6">
+					{% include "itfsite/campaign-bubble.html" %}
+				</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+</div>
 {% endblock %}
 
