@@ -16,12 +16,12 @@
 }
 
 #magic-number {
-	margin: 0 auto;
+	margin-top: 1.5em;
 }
 #magic-number td {
 	vertical-align: top;
 	line-height: 135%;
-	font-size: 20px;
+	font-size: 16px;
 	font-family: "jaf-facitweb", sans-serif;
 	font-weight: bold;
 	padding-bottom: .5em;
@@ -56,61 +56,51 @@
 <h1>279 for Change Campaign</h1>
 
 <div id="deck">
-	The 279 for Change Campaign is designed to change the way things are done in Washington, DC.
+	<p>Right now all of these bills are just votes away from becoming the law of the land.</p>
+	<p>Pick one and help crowdsource the 279* votes needed.</p>
 </div>
+
+<h2>Do you want to . . .</h2>
+
+{% if open_campaigns|length > 0 %}
+<div class="row">
+	{% for c in open_campaigns %}
+		{% if forloop.counter0|divisibleby:2 %}<div class="visible-sm clearfix"></div>{% endif %}
+		{% if forloop.counter0|divisibleby:3 %}<div class="visible-md visible-lg clearfix"></div>{% endif %}
+		<div class="col-sm-6 col-md-4">
+			{% include "itfsite/campaign-bubble.html" %}
+		</div>
+	{% endfor %}
+</div>
+{% endif %}
 
 <hr>
 
-<div class="row">
-	<div class="col-md-6 col-lg-5">
-		<div style="padding-right: 15px">
-			<p>From now on, we control the politicians and our fate as we collectively crowdsource “The Magic Number” in American government to end gridlock and move this country that we love forward.</p>
+<p>In the United States the “Magic Number” to get anything passed into law is only 279:</p>
 
-			<h2>What&rsquo;s the magic number?</h2>
+<table id="magic-number">
+	<tr>
+		<td/>
+		<td class="num">218</td>
+		<td class="descr">Congresspersons in the House of Representatives<div>(a majority)</div></td>
+	</tr>
+	<tr>
+		<td class="sym">+</td>
+		<td class="num">60</td>
+		<td class="descr">Senators in the United States Senate<div>(a filibuster-proof majority)</div></td>
+	</tr>
+	<tr>
+		<td class="sym">+</td>
+		<td class="num">1</td>
+		<td class="descr">Person in the White House to Sign It</td>
+	</tr>
+	<tr class="total">
+		<td class="sym">=</td>
+		<td class="num">279</td>
+		<td class="descr"></td>
+	</tr>
+</table>
 
-			<table id="magic-number">
-				<tr>
-					<td/>
-					<td class="num">218</td>
-					<td class="descr">Representatives<div>(a majority)</div></td>
-				</tr>
-				<tr>
-					<td class="sym">+</td>
-					<td class="num">60</td>
-					<td class="descr">Senators<div>(breaks a filibuster)</div></td>
-				</tr>
-				<tr>
-					<td class="sym">+</td>
-					<td class="num">1</td>
-					<td class="descr">The President</td>
-				</tr>
-				<tr class="total">
-					<td class="sym">=</td>
-					<td class="num">279</td>
-					<td class="descr">Can Make A Law</td>
-				</tr>
-			</table>
 
-			<p>With the “Magic 279,” we can pass ANY bill, we can make ANYTHING happen, and we can CHANGE AMERICA in a heartbeat!</p>
-		</div>
-	</div>
-
-	<div class="col-md-6 col-lg-7">
-		<h2 style="margin-top: 0">Let&rsquo;s get to 279 on these issues:</h2>
-
-		<p style="margin: 2em 0;">Here are the celebrities, causes and bills that are available RIGHT NOW on causes that ALREADY have a substantial majority of support in the country. Choose one (or more) and help us crowdsource 279, end gridlock, practice true democracy and change America!</p>
-
-		{% if open_campaigns|length > 0 %}
-		<div class="row">
-			{% for c in open_campaigns %}
-				{% if forloop.counter0|divisibleby:2 %}<div class="clearfix"></div>{% endif %}
-				<div class="col-sm-6">
-					{% include "itfsite/campaign-bubble.html" %}
-				</div>
-			{% endfor %}
-		</div>
-		{% endif %}
-	</div>
-</div>
 {% endblock %}
 

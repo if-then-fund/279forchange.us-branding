@@ -1,4 +1,8 @@
 <style>
+	h1 {
+		margin-bottom: 10px;
+	}
+
 	#twoseventyninecount {
 		padding: 1em;
 	}
@@ -18,23 +22,24 @@
 
 {% with counts=campaign.twoseventyninecounts %}
 {% if counts %}
+<p style="font-size: 34px; line-height: 135%;">{{counts.total}} of 279. {{counts.total_needed}} More Needed to Become Law! </p>
 <div id="twoseventyninecount">
 	<p>As of TODAY&mdash;</p>
 	<table id="magic-number">
 		<tr>
 			<td/>
-			<td class="num">{{counts.house}}</td>
+			<td class="num">{{counts.house_needed}}</td>
 			<td class="descr">more Congresspersons needed to PASS THE HOUSE, and </td>
 		</tr>
 		<tr>
 			<td class="sym">+</td>
-			<td class="num">{{counts.senate}}</td>
+			<td class="num">{{counts.senate_needed}}</td>
 			<td class="descr">more Senators needed to PASS THE SENATE</td>
 		</tr>
 		<tr>
 			<td class="sym">+</td>
-			<td class="num">{{counts.president}}</td>
-			<td class="descr">The President&rsquo;s signature needed to BECOME LAW</td>
+			<td class="num">{{counts.president_needed}}</td>
+			<td class="descr">the President&rsquo;s signature needed to BECOME LAW</td>
 		</tr>
 	</table>
 </div>
