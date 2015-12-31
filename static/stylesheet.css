@@ -34,8 +34,12 @@ a, a:hover, a:link, a:visited, a:active {
 	background-color: #885B94;
 }
 
+.navbar {
+	margin-bottom: 0;
+}
 .navbar a {
 	color: #F9F5E6;
+	border: none;
 }
 .navbar a.navbar-brand {
 	background-image: url('/static/branding/279forchange.us/logo.png');

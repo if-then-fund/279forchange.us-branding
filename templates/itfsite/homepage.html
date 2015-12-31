@@ -1,11 +1,12 @@
 {% extends "master.html" %}
+{% load itfsite_utils %}
 
-{% block title2 %}{{SITE_NAME}} - {% include "tagline.txt" %}{% endblock %}
+{% block title2 %}{{SITE_NAME}} - {% include2 "tagline.txt" %}{% endblock %}
 
 {% block head %}
 <meta property="og:title" content="{{SITE_NAME}}" />
-<meta name="description" content="{% include "tagline.txt" %}">
-<meta property="og:description" content="{% include "tagline.txt" %}">
+<meta name="description" content="{% include2 "tagline.txt" %}">
+<meta property="og:description" content="{% include2 "tagline.txt" %}">
 {% include "og_image.html" %}
 <meta name="twitter:card" content="summary" />
 
@@ -85,7 +86,7 @@
 		{% if forloop.counter0|divisibleby:2 %}<div class="visible-sm clearfix"></div>{% endif %}
 		{% if forloop.counter0|divisibleby:3 %}<div class="visible-md visible-lg clearfix"></div>{% endif %}
 		<div class="col-sm-6 col-md-4">
-			{% include "itfsite/campaign-bubble.html" %}
+			{% include2 "itfsite/campaign-bubble.html" %}
 		</div>
 	{% endfor %}
 </div>
